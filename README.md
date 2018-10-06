@@ -4,7 +4,7 @@ Bidirectional Best Hits using exonerate
 # Usage
 
 ```bash
-python bbh.py --help
+$ python bbh.py --help
 Usage: bbh.py [OPTIONS]
 
   Run Bidirectional best hits on two organisms
