@@ -60,8 +60,17 @@ def bbh(fasta1, fasta2, outdir):
                                                           org2 ) ),
                 index=False,
                 sep='\t' )
-                              
-            
+    bbh_to_sexp( bbh, os.path.join( outdir, '{}-and-{}-BBH.lisp'.format( org1, org2)),
+                 org1, org2 )
+                 
+def bbh_to_sexp( df, outfile, org1, org2 ):
+    with open(outfile, 'w') as out:
+        gene_pairs = '\n'.join(['({} {})'\
+                                                             .format(df.loc[bbh, org1], 
+                                                                     df.loc[bbh,org2])
+                                                               for bbh in df.index])
+        out.write("""(setq *bbh* '({}))""".format(gene_pairs))
+                 
 if __name__ == '__main__':
     bbh()
     
